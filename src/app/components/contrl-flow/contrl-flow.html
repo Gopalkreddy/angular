@@ -1,0 +1,46 @@
+<p>contrl-flow works!</p>
+
+<table>
+
+  <tr>
+    <td>
+        @if(showParagraph){
+          <p>This is a conditional paragraph.</p>
+    }@else {
+        <p>this is else para</p>
+    }
+    </td>
+    <td>
+        <button class="btn btn-success" (click)="showParagraph = !showParagraph">
+          Toggle Paragraph
+        </button>
+
+        <button (click)="hideParagraph()">
+          Hide Paragraph
+        </button>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+        @if(startMonthName=='January'){
+          <p>It's the start of the year!</p>
+    }@else if(startMonthName=='June'){
+        <p>It's mid-year!</p>
+    }@else {
+        <p>It's just another month.</p>
+    }
+    </td>
+    <td> <input type="text"  [(ngModel)]="startMonthName"> </td>
+  </tr>
+  <tr>
+    <td>
+        <p>Months of the Year:</p>
+        <ul>
+          @for (item of months;track $index){ 
+            <li>{{ item }}</li>
+          }
+        </ul>
+    </td>
+  </tr>
+</table>

@@ -34,4 +34,86 @@ we can even use class and style bindings
 signal in angular : Signals are a reactive primitive that allow you to create reactive state in your Angular applications. They enable automatic updates to the UI when the underlying data changes.    
 
 
-what is angular routing : Angular routing is a mechanism that allows navigation between different views or components in a single-page application (SPA) without reloading the entire page.
+
+export class SignalEx {
+  title = signal('Hello, Angular Signals!');
+  name =signal<string>('Gopal')
+}   
+
+for calling signal value use () parentheses like function call
+
+example : 
+In template : <h1>{{ title() }}</h1>
+In component : console.log(this.title())
+
+signal set value : use set() method
+
+example :
+this.title.set('New Title');
+
+signal will work only in angular 16 and above versions with node 18 and above versions
+
+control flow in angular : Control flow in Angular refers to the mechanisms that allow you to control the rendering of elements in your templates based on certain conditions or iterations. Angular provides structural directives for this purpose.
+
+types of control flow directives in angular :
+1. *ngIf : Conditionally includes or excludes a template based on the value of an expression.
+2. *ngFor : Repeats a template for each item in a collection.
+3. *ngSwitch : Conditionally includes one of several templates based on the value of an expression.
+
+example of *ngIf :
+In template :
+<div *ngIf="isVisible">This content is visible.</div>
+
+In component :
+isVisible = true;
+
+@if isVisible is true, the div will be rendered; otherwise, it will be removed from the DOM.
+
+Routing in angular : Routing in Angular is a mechanism that allows you to navigate between different views or components within a single-page application (SPA). It enables you to define routes, which map URLs to specific components, allowing users to navigate through the application without reloading the entire page.
+
+To set up routing in an Angular application, you typically follow these steps:
+
+1. Import the RouterModule and Routes from @angular/router in your app.module.ts file.
+2. Define your routes as an array of objects, where each object specifies a path and the corresponding component to render.
+3. Use the RouterModule.forRoot() method to configure the router with your defined routes.
+4. Add a <router-outlet> directive in your main template (usually app.component.html) to serve as a placeholder for the routed components.
+5. Use routerLink directives in your templates to create navigation links.
+
+Example:
+
+In app.module.ts:
+import { RouterLink, RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+
+export const routes: Routes = [
+    {
+        path: 'admin',
+        component:Admin
+    },
+    {
+        path: 'user',
+        component: User
+    },
+    {
+        path: 'control-flow',
+        component: ContrlFlow
+    },
+    {
+        path: 'data-binding',
+        component: DataBinding
+    }
+];
+
+RouterLink : The RouterLink directive is used to create navigation links in Angular applications. It allows you to define clickable elements that navigate to different routes defined in your routing configuration.
+
+To use RouterLink, you typically bind it to a path defined in your routing configuration. When the user clicks on the element with the RouterLink directive, Angular's router will navigate to the specified route without reloading the entire page.
+
+Example:
+
+In template:
+<a routerLink="/admin">Go to Admin</a>
+<a routerLink="/user">Go to User</a>
+
+In this example, clicking on the "Go to Admin" link will navigate to the /admin route, and clicking on the "Go to User" link will navigate to the /user route. The corresponding components for these routes will be rendered in the <router-outlet> defined in your main template.
+  } 
