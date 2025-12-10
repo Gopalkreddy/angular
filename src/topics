@@ -1,0 +1,37 @@
+import { signal } from "@angular/core"
+
+install angular : npm install -g @angular/cli
+
+with specific version : npm install -g @angular/cli@<version>
+
+create new angular project : ng new <project-name>
+serve angular project : cd <project-name> && ng serve
+build angular project : ng build
+for maintaining node versions : use nvm (Node Version Manager)
+older version of node : nvm install <version>
+switch node version : nvm use <version>
+list installed node versions : nvm ls
+list available node versions : nvm ls-remote
+
+define angular component : ng generate component <component-name>
+define angular service : ng generate service <service-name>
+define angular module : ng generate module <module-name>
+define angular directive : ng generate directive <directive-name>
+what is component : A component controls a patch of screen called a view. It consists of a TypeScript class, an HTML template, and optional CSS styles.
+what is service : A service is a class that provides specific functionality and can be shared across components.
+what is module : A module is a container that groups related components, services, directives, and pipes.
+what is directive : A directive is a class that adds behavior to elements in your Angular applications.
+
+data binding in angular : Data binding is a mechanism for coordinating parts of a template with parts of a component. It allows you to define communication between the component class and the template.
+
+types of data binding in angular :
+1. Interpolation: {{ value }}
+2. Property Binding: [property]="value"
+we can even use class and style bindings
+3. Event Binding: (event)="handler()"
+4. Two-Way Binding: [(ngModel)]="property"
+
+signal in angular : Signals are a reactive primitive that allow you to create reactive state in your Angular applications. They enable automatic updates to the UI when the underlying data changes.    
+
+
+what is angular routing : Angular routing is a mechanism that allows navigation between different views or components in a single-page application (SPA) without reloading the entire page.

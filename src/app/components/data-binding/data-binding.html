@@ -1,0 +1,40 @@
+<table>
+    <tr>
+        <td [class]="myClassName">Interpolation:</td>
+        <td>{{ title }}</td>
+    </tr>
+    <tr>
+        <td [class]="myClassName">css className Binding :</td>
+        <td>{{ title }}</td>
+    </tr>
+    <tr>
+        <td>Property Binding:</td>
+        <td><input type="text"
+           [value]="title"
+            /></td>
+    </tr>
+    <tr>
+        <td>Property Binding:</td>
+        <td><input type="text"
+           value="Testing Property Binding"
+            [attr.maxlength]="maxlength" /></td>
+    </tr>
+    <tr>
+        <td>Event Binding:</td>
+        <td><button (click)="changeTitle()">Change Title</button></td>
+    </tr>
+    <tr>
+        <td>Event Binding using change event:</td>
+        <td>
+            <select (change)="changeCity()">
+                <option value="1">Hyd</option>
+                <option value="2">Pune</option>
+                <option value="3">Mumbai</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>Two-Way Binding:</td>
+        <td><input [(ngModel)]="title" /></td>
+    </tr>
+    </table>
