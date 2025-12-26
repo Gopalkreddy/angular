@@ -1,4 +1,4 @@
-import { signal } from "@angular/core"
+import { Component, Directive, signal } from "@angular/core"
 
 install angular : npm install -g @angular/cli
 
@@ -19,8 +19,34 @@ define angular module : ng generate module <module-name>
 define angular directive : ng generate directive <directive-name>
 what is component : A component controls a patch of screen called a view. It consists of a TypeScript class, an HTML template, and optional CSS styles.
 what is service : A service is a class that provides specific functionality and can be shared across components.
+example :
+@Injectable({
+  providedIn: 'root'
+})
+export class DataService {
+  getData() {
+    return ['Data1', 'Data2', 'Data3'];
+  }
+}
 what is module : A module is a container that groups related components, services, directives, and pipes.
+example :
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 what is directive : A directive is a class that adds behavior to elements in your Angular applications.
+example :
+@Directive({
+  selector: '[appHighlight]'
+})
+export class HighlightDirective {
+  constructor(private el: ElementRef) {
+    this.el.nativeElement.style.backgroundColor = 'yellow';
+  }
+}
 
 data binding in angular : Data binding is a mechanism for coordinating parts of a template with parts of a component. It allows you to define communication between the component class and the template.
 
@@ -81,11 +107,12 @@ To set up routing in an Angular application, you typically follow these steps:
 
 Example:
 
-In app.module.ts:
+In app.ts:
 import { RouterLink, RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 
+In app.routes.ts:
 export const routes: Routes = [
     {
         path: 'admin',
@@ -117,3 +144,63 @@ In template:
 
 In this example, clicking on the "Go to Admin" link will navigate to the /admin route, and clicking on the "Go to User" link will navigate to the /user route. The corresponding components for these routes will be rendered in the <router-outlet> defined in your main template.
   } 
+
+  Directives used : two types of directives
+
+  predefined directives : 
+    *ngIf, *ngFor, *ngSwitch, ngClass, ngStyle, ngModel
+
+    routing directives : routerLink, routerOutlet
+
+  custom directives : user defined directives to add specific behavior to elements
+
+types of directives in angular :
+
+  1. Structural Directives : they change the structure of the DOM
+     examples : *ngIf, *ngFor, *
+     
+     * These Structural Directives are deprecated in angular 16 and above versions
+
+  2. Attribute Directives : they change the appearance or behavior of an element, component, or another directive.
+     examples : ngClass, ngStyle, ngModel
+
+Component life cycle in angular : Angular components have a well-defined lifecycle that consists of various phases from creation to destruction. Angular provides lifecycle hooks that allow you to tap into these phases and perform specific actions at different points in the component's lifecycle.
+
+The main lifecycle hooks in Angular components are:
+
+1. ngOnChanges: Called before ngOnInit and whenever one or more data-bound input properties change.
+2. ngOnInit: Called once, after the first ngOnChanges. This is where you typically perform component initialization.
+3. ngDoCheck: Called during every change detection run, allowing you to implement custom change detection.
+4. ngAfterContentInit: Called once after the first ngDoCheck, after content (ng-content) has been projected into the component.
+5. ngAfterContentChecked: Called after ngAfterContentInit and every subsequent ngDoCheck, after projected content has been checked.
+6. ngAfterViewInit: Called once after the first ngAfterContentChecked, after the component's view and child views have been initialized.
+7. ngAfterViewChecked: Called after ngAfterViewInit and every subsequent ngAfterContentChecked, after the component's view and child views have been checked.
+8. ngOnDestroy: Called just before Angular destroys the component. This is where you typically perform cleanup tasks, such as unsubscribing from observables.
+subcribe to observables in ngOnInit and unsubscribe in ngOnDestroy to prevent memory leaks.
+
+By implementing these lifecycle hooks in your component class, you can manage the component's behavior and state throughout its lifecycle.
+
+FormsModule in angular : FormsModule is an Angular module that provides support for template-driven forms. It includes directives and services that make it easier to create and manage forms in Angular applications.ngIf, *ngSwitch   
+To use FormsModule in your Angular application, you need to import it from @angular/forms and include it in the imports array of your NgModule.
+
+install bootstrap : npm install bootstrap
+
+import bootstrap in angular.json file
+
+"styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css"
+            ],
+
+package.json file also will have bootstrap entry in dependencies
+
+"dependencies": {
+    ...
+    "bootstrap": "^5.3.0",
+    ...
+  },  
+use bootstrap classes in angular components
+
+example :
+In template :
+<button class="btn btn-primary">Primary Button</button>

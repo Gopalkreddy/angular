@@ -3,6 +3,7 @@ import { Admin } from './components/admin/admin';
 import { User } from './components/user/user';
 import { ContrlFlow } from './components/contrl-flow/contrl-flow';
 import { DataBinding } from './components/data-binding/data-binding';
+import { AttDirective } from './att-directive/att-directive';
 
 export const routes: Routes = [
     {
@@ -20,5 +21,9 @@ export const routes: Routes = [
     {
         path: 'data-binding',
         component: DataBinding
+    },
+    {
+        path: 'att-directive',
+        component: AttDirective
     }
 ];

@@ -4,10 +4,11 @@ import { Admin } from './components/admin/admin';
 import { User } from './components/user/user';
 import { DataBinding } from './components/data-binding/data-binding';
 import { ContrlFlow } from './components/contrl-flow/contrl-flow';
+import { AttDirective } from './att-directive/att-directive';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Admin, User, ContrlFlow, DataBinding, RouterLink],
+  imports: [RouterOutlet, Admin, User, ContrlFlow, DataBinding, RouterLink,AttDirective],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
