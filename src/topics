@@ -185,7 +185,9 @@ To use FormsModule in your Angular application, you need to import it from @angu
 
 install bootstrap : npm install bootstrap
 
-import bootstrap in angular.json file
+import bootstrapimportimport { SlicePipe } from "@angular/common"
+ { pipe } from "rxjs"
+ in angular.json file
 
 "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -204,3 +206,73 @@ use bootstrap classes in angular components
 example :
 In template :
 <button class="btn btn-primary">Primary Button</button>
+
+pipes in angular : Pipes in Angular are a way to transform data in templates. They take input data and transform it into a desired output format. 
+Pipes are used within template expressions to format data for display.
+
+example :
+In template :
+<p>{{ birthday | date:'longDate' }}</p>
+
+In component :
+birthday = new Date(1990, 1, 1);
+
+In this example, the date pipe formats the birthday property into a long date format for display in the template.
+
+upppercase pipe : The uppercase pipe in Angular is used to transform a string to uppercase letters. It is a built-in pipe that can be used directly in Angular templates.
+
+example :
+In template :
+<p>{{ 'hello world' | uppercase }}</p>
+
+Output :
+HELLO WORLD
+
+lowercase pipe : The lowercase pipe in Angular is used to transform a string to lowercase letters. It is a built-in pipe that can be used directly in Angular templates.
+
+example :
+In template :
+<p>{{ 'HELLO WORLD' | lowercase }}</p>
+
+Output :
+hello world
+
+titlecase pipe : The titlecase pipe in Angular is used to transform a string so that the first letter of each word is capitalized. It is a built-in pipe that can be used directly in Angular templates.
+
+example :
+In template :
+<p>{{ 'hello world from angular' | titlecase }}</p>
+
+Output :
+Hello World From Angular
+
+SlicePipe : The SlicePipe in Angular is used to create a new array or string that is a subset of the original array or string. It allows you to specify a start index and an optional end index to extract a portion of the data.
+
+example :
+In template :
+<p>{{ 'Hello Angular Developers' | slice:6:15 }}</p>
+
+Output :
+Angular D
+
+In this example, the slice pipe extracts the substring from index 6 to index 15 of the original string.
+
+JsonPipe  : The JsonPipe in Angular is used to convert a JavaScript object or array into a JSON string representation. It is particularly useful for debugging purposes, as it allows you to easily visualize the structure and content of complex objects in your templates.
+
+example :
+In template :
+<p>{{ student | json }}</p>
+
+In component :
+student = {
+  name: 'Gopal Reddy',
+  age: 33,
+  address: 'Hyderabad'
+};
+
+Output :
+{
+  "name": "Gopal Reddy",
+  "age": 33,
+  "address": "Hyderabad"
+}
