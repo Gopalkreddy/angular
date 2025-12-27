@@ -63,7 +63,7 @@ export class User {
   }
 
   deleteUser(userId:number){
-    this.httpClint.delete("https://api.freeprojectapi.com/api/GoalTracker/deleteUserById?=" + userId).subscribe((res:any)=>{
+    this.httpClint.delete("https://api.freeprojectapi.com/api/GoalTracker/deleteUserById?Id=" + userId).subscribe((res:any)=>{
       console.log(res);
       alert("User Deleted Successfully");
       this.getUsers();
