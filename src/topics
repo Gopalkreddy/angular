@@ -276,3 +276,62 @@ Output :
   "age": 33,
   "address": "Hyderabad"
 }
+
+API integration in angular : API integration in Angular involves making HTTP requests to external APIs to fetch or send data. 
+Angular provides the HttpClient module, which makes it easy to work with HTTP requests and responses.
+
+To integrate an API in your Angular application, you typically follow these steps:
+
+1. Import the HttpClientModule in your app.module.ts file and include it in the imports array of your NgModule.
+2. Create a service that will handle the API calls using the HttpClient.
+3. Use the service in your components to make API requests and handle the responses.
+
+Example:
+
+In app.module.ts:
+import { HttpClientModule } from '@angular/common/http';
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    HttpClientModule
+  ],
+  ...
+})
+export class AppModule { }
+
+In data.service.ts:
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DataService {
+  private apiUrl = 'https://api.example.com/data';  
+  constructor(private http: HttpClient) { }
+
+  getData(): Observable<any> {
+    return this.http.get<any>(this.apiUrl);
+  }
+
+  Forms are two types in angular :
+1. Template-driven forms
+2. Reactive forms
+
+Template-driven forms : Template-driven forms are a way to create forms in Angular using directives in the template. They are simple to use and are suitable for small to medium-sized forms.
+
+To create a template-driven form, you typically follow these steps:
+
+1. Import the FormsModule in your app.module.ts file and include it in the imports array of your NgModule.
+2. Use the ngModel directive in your template to bind form controls to component properties.
+3. Handle form submission using the (ngSubmit) event.
+
+Reactive forms : Reactive forms are a way to create forms in Angular using a model-driven approach. They provide more control and flexibility over form validation and state management.
+To create a reactive form, you typically follow these steps:
+
+1. Import the ReactiveFormsModule in your app.module.ts file and include it in the imports array of your NgModule.
+2. Create a FormGroup and FormControl instances in your component to define the form structure.
+3. Use the formGroup directive in your template to bind the form to the component's FormGroup instance.
+4. Handle form submission using the (ngSubmit) event.

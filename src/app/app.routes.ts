@@ -4,6 +4,7 @@ import { User } from './components/user/user';
 import { ContrlFlow } from './components/contrl-flow/contrl-flow';
 import { DataBinding } from './components/data-binding/data-binding';
 import { AttDirective } from './att-directive/att-directive';
+import { GetApi } from './get-api/get-api';
 
 export const routes: Routes = [
     {
@@ -25,5 +26,13 @@ export const routes: Routes = [
     {
         path: 'att-directive',
         component: AttDirective
+    },
+    {
+        path: 'get-api1',
+        component: GetApi
+    },
+    {
+        path:'users',
+        component:User
     }
 ];

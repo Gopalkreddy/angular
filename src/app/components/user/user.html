@@ -1,1 +1,86 @@
-<p>user works!</p>
+<div class="row">
+    <div class="col-md-7">
+       <div class="card">
+            <div class="card-header">
+                 <h3>Users List</h3>
+            </div>
+            <div class="card-body">
+                 <div class="table">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>User ID</th>
+                                    <th>Email</th>
+                                    <th>FullName</th>
+                                    <th>Mobile</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for(user of userList ; track $index ){
+                                <tr >
+                                    <td>{{$index+1}}</td>
+                                    <td>{{user.userId}}</td>
+                                    <td>{{user.emailId}}</td>
+                                    <td>{{user.fullName}}</td>
+                                    <td>{{user.mobileNo}}</td>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm" (click)="editUser(user)">Edit</button>
+                                        <button class="btn btn-danger btn-sm" (click)="deleteUser(user.userId)">Delete</button>
+                                    </td>
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                 </div>
+            </div>
+       </div>
+    </div>
+    <div class="col-md-5">
+        <div class="card">
+            <div class="header">
+                New User Registration
+            </div>
+            <div class="card-body">
+              
+                <div class="row">
+                    <div class="col-6">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" [(ngModel)]="userObject.fullName" placeholder="Enter username">
+                    </div>
+                    <div class="col-6">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" [(ngModel)]="userObject.emailId" placeholder="Enter email">
+                    </div>
+                    <div class="col-6">
+                        <label for="mobile" class="form-label">Mobile No</label>
+                        <input type="text" class="form-control" [(ngModel)]="userObject.mobileNo" placeholder="Enter mobile number">
+                    </div>
+                    <div class="col-6">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" [(ngModel)]="userObject.password" placeholder="Enter password">
+                    </div>
+                   
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mt-3">
+                        <button class="btn btn-primary" (click)="reset()">Reset</button>
+                    </div>
+
+                    @if(userObject.userId > 0){
+                    <div class="col-md-6 mt-3">
+                        <button [ngStyle]="{backgroundColor: 'orange', color: 'white'}" (click)="updateUser()">Update</button>
+                    </div>
+                    }@else{
+                    
+                    <div class="col-md-6 mt-3">
+                        <button [ngStyle]="{backgroundColor: 'skyblue', color: 'white'}" (click)="saveUser()">Register</button>
+                    </div>
+                    }
+                </div>
+               
+        </div>
+       
+    </div>
+</div>

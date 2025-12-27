@@ -8,6 +8,11 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
+  "serve": {
+  "options": {
+    "proxyConfig": "proxy.conf.json"
+  }
+},
   "prettier": {
     "printWidth": 100,
     "singleQuote": true,
