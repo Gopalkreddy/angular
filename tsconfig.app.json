@@ -8,7 +8,7 @@
   },
   "include": [
     "src/**/*.ts"
-, "src/topics"  ],
+, "src/topics", "src/topics"  ],
   "exclude": [
     "src/**/*.spec.ts"
   ]

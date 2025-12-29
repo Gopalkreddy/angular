@@ -5,6 +5,7 @@ import { ContrlFlow } from './components/contrl-flow/contrl-flow';
 import { DataBinding } from './components/data-binding/data-binding';
 import { AttDirective } from './att-directive/att-directive';
 import { GetApi } from './get-api/get-api';
+import { ReactiveForm } from './components/reactive-form/reactive-form';
 
 export const routes: Routes = [
     {
@@ -34,5 +35,9 @@ export const routes: Routes = [
     {
         path:'users',
         component:User
+    },
+    {
+        path:'reactive-form',
+        component:ReactiveForm
     }
 ];

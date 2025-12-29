@@ -43,38 +43,38 @@
                 New User Registration
             </div>
             <div class="card-body">
-              <form #userForm="ngForm">
+              <form [formGroup]="userForm">
                 <div class="row">
                     <div class="col-6">
                         <label for="username" class="form-label">Username</label>
-                        <input type="text" #fullname ="ngModel" required class="form-control" name="fullName" [(ngModel)]="userObject.fullName" placeholder="Enter username">
-
-                        <div class="text-danger">{{fullname.errors?.['required'] ? 'Username is required' : ''}}</div>
+                        <input type="text" class="form-control" formControlName="fullName"  placeholder="Enter username">
                     </div>
                     <div class="col-6">
                         <label for="email" class="form-label">Email address</label>
-                        <input type="email" #email ="ngModel" required minlength="4" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" class="form-control" name="emailId" [(ngModel)]="userObject.emailId" placeholder="Enter email">
-                        @if(email.touched){
+                        <input type="email" class="form-control"  formControlName="emailId"  placeholder="Enter email">
+
+                         @if(userForm.controls['emailId'].touched){
 
                         <div class="text-danger">
-                            @if(email.errors?.['required'] || email.errors?.['minlength']){
-                            {{email.errors?.['required'] ? 'Email is required' : ''}}
-                            } @if(email.errors?.['minlength']){
-                            {{email.errors?.['minlength'] ? 'Minimum 4 characters required' : ''}}
+                            @if(userForm.controls['emailId'].errors?.['required']){
+                            {{userForm.controls['emailId'].errors?.['required'] ? 'Email is required' : ''}}
+                            } @if(userForm.controls['emailId'].errors?.['minlength']){
+                            {{userForm.controls['emailId'].errors?.['minlength'] ? 'Minimum 4 characters required' : ''}}
                             }
-                            @if(email.errors?.['pattern']){
-                            {{email.errors?.['pattern'] ? 'Invalid email format' : ''}}
+                            @if(userForm.controls['emailId'].errors?.['email']){
+                            {{userForm.controls['emailId'].errors?.['email'] ? 'Invalid email format' : ''}}
                             }
                         </div>
                     }
+
                     </div>
                     <div class="col-6">
                         <label for="mobile" class="form-label">Mobile No</label>
-                        <input type="text" class="form-control" name="mobileNo" [(ngModel)]="userObject.mobileNo" placeholder="Enter mobile number">
+                        <input type="text" class="form-control" formControlName="mobileNo" placeholder="Enter mobile number">
                     </div>
                     <div class="col-6">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" name="password" [(ngModel)]="userObject.password" placeholder="Enter password">
+                        <input type="password" class="form-control" formControlName="password" placeholder="Enter password">
                     </div>
                    
                 </div>
@@ -82,15 +82,15 @@
                     <div class="col-md-6 mt-3">
                         <button class="btn btn-primary" (click)="reset()">Reset</button>
                     </div>
-                   
+
                     @if(userObject.userId > 0){
                     <div class="col-md-6 mt-3">
-                        <button [ngStyle]="{backgroundColor: 'orange', color: 'white'}" [disabled]="userForm.invalid" (click)="updateUser()">Update</button>
+                        <button [ngStyle]="{backgroundColor: 'orange', color: 'white'}" (click)="updateUser()">Update</button>
                     </div>
                     }@else{
                     
                     <div class="col-md-6 mt-3">
-                        <button [ngStyle]="{backgroundColor: 'skyblue', color: 'white'}" [disabled]="userForm.invalid" (click)="saveUser()">Register</button>
+                        <button [ngStyle]="{backgroundColor: 'skyblue', color: 'white'}" (click)="saveUser()">Register</button>
                     </div>
                     }
                 </div>

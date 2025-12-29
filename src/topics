@@ -303,7 +303,7 @@ export class AppModule { }
 In data.service.ts:
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, using } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -333,5 +333,58 @@ To create a reactive form, you typically follow these steps:
 
 1. Import the ReactiveFormsModule in your app.module.ts file and include it in the imports array of your NgModule.
 2. Create a FormGroup and FormControl instances in your component to define the form structure.
+
+userForm : FormGroup = new FormGroup({
+    userId : new FormControl(0),
+    emailId : new FormControl(''),
+    password : new FormControl(''),
+    fullName : new FormControl(''),
+    mobileNo : new FormControl('')
+  });
+
+  formControlName directive in your template to bind form controls to the FormControl instances in your component.
+
+    <input type="text" class="form-control" formControlName="fullName"  placeholder="Enter username">
+
 3. Use the formGroup directive in your template to bind the form to the component's FormGroup instance.
 4. Handle form submission using the (ngSubmit) event.
+
+validation in angular forms : Validation in Angular forms is the process of ensuring that user input meets certain criteria before it is processed or submitted. Angular provides built-in validators as well as the ability to create custom validators for both template-driven and reactive forms.
+
+example of validation in template-driven forms :
+In template :
+<input type="text" #fullname ="ngModel" required class="form-control" [(ngModel)]="userObject.fullName" placeholder="Enter username">
+<div class="text-danger">{{fullname.errors?.['required'] ? 'Username is required' : ''}}</div>
+
+In this example, the required attribute ensures that the fullName field is not left empty. If the user tries to submit the form without entering a username, an error message will be displayed.
+
+example of validation in reactive forms :
+In component :
+userForm : FormGroup = new FormGroup({
+    fullName : new FormControl('', [Validators.required, Validators.minLength(4)]),
+    emailId : new FormControl('', [Validators.required, Validators.email]),
+    password : new FormControl('', [Validators.required, Validators.minLength(6)]),
+    mobileNo : new FormControl('', [Validators.required, Validators.pattern('^[0-9]{10}$')])
+  });
+
+In template :
+<input type="text" class="form-control" formControlName="fullName" placeholder="Enter username">
+<div class="text-danger" *ngIf="userForm.get('fullName')?.errors?.['required']">Username is required</div>
+<div class="text-danger" *ngIf="userForm.get('fullName')?.errors?.['minlength']">Username must be at least 4 characters long</div>
+
+In this example, the fullName field has multiple validators: it is required and must be at least 4 characters long. If the user input does not meet these criteria, appropriate error messages will be displayed.
+    alert("User Updated Successfully");
+      this.getUsers();
+    }); 
+  }
+
+userForm.controls['userId'].errors to get specific control errors
+
+@if(userForm.controls['emailId'].errors?.['required']){
+{{userForm.controls['emailId'].errors?.['required'] ? 'Email is required' : ''}}
+
+
+using controls property
+@if(userForm.controls.emailId.errors?.['required']){
+{{userForm.controls.emailId.errors?.['required'] ? 'Email is required' : ''}}
+}
