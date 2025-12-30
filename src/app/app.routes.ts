@@ -6,6 +6,7 @@ import { DataBinding } from './components/data-binding/data-binding';
 import { AttDirective } from './att-directive/att-directive';
 import { GetApi } from './get-api/get-api';
 import { ReactiveForm } from './components/reactive-form/reactive-form';
+import { PipeEx } from './components/pipe-ex/pipe-ex';
 
 export const routes: Routes = [
     {
@@ -39,5 +40,9 @@ export const routes: Routes = [
     {
         path:'reactive-form',
         component:ReactiveForm
+    },
+    {
+        path: 'pipe',
+        component: PipeEx 
     }
 ];

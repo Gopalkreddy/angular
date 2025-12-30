@@ -388,3 +388,35 @@ using controls property
 @if(userForm.controls.emailId.errors?.['required']){
 {{userForm.controls.emailId.errors?.['required'] ? 'Email is required' : ''}}
 }
+
+ng g p namespaceipe-ex : ng generate pipe namespaceipe-ex using angular cli command to generate custom pipe
+
+custom pipe in angular : A custom pipe in Angular is a user-defined transformation function that can be used to format or transform data in templates. 
+Custom pipes allow you to create reusable data transformation logic that can be applied to values in your Angular applications.
+
+To create a custom pipe, you typically follow these steps:
+1. Use the Angular CLI command ng generate pipe <pipe-name> to generate a new pipe file.
+2. Implement the PipeTransform interface in your pipe class and define the transform method, which contains the logic for transforming the input value.
+3. Use the @Pipe decorator to define the name of the pipe, which will be used in templates.
+4. Register the pipe in the declarations array of your NgModule.
+
+Example:
+
+In pipe-ex.ts:
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'namespaceipeEx'
+})
+export class NamespaceipeEx implements PipeTransform {
+  transform(value: string, ...args: any[]): string {
+    // Custom transformation logic
+    return value.toUpperCase(); // Example: Convert to uppercase
+  }
+} 
+
+In template:
+<p>{{ 'hello world' | namespaceipeEx }}</p>
+
+Output :
+HELLO WORLD
