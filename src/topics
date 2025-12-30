@@ -420,3 +420,64 @@ In template:
 
 Output :
 HELLO WORLD
+
+ng g s master : ng generate service master using angular cli command to generate service file
+
+service in angular : A service in Angular is a class that provides specific functionality and can be shared across components. 
+Services are used to encapsulate business logic, data retrieval, and other operations that are not directly related to the view.
+
+To create a service in Angular, you typically follow these steps:
+
+1. Use the Angular CLI command ng generate service <service-name> to generate a new service file.
+2. Implement the desired functionality in the service class.
+3. Use the @Injectable decorator to define the service and specify its providedIn property, which determines the scope of the service.
+4. Inject the service into components or other services where it is needed.
+
+Example:
+
+In master.ts:
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class Master {
+  private apiUrl = 'https://api.freeprojectapi.com/api/GoalTracker/';
+
+  constructor(private http: HttpClient) {}  
+
+  getSum(a: number, b: number): number {
+    return a + b;
+  }
+
+  getUsers(): Observable<any> {
+    return this.http.get(this.apiUrl + 'getAllUsers');
+  }
+}
+
+In component:
+import { Master } from '../../services/master';
+
+export class User {
+  masterService = inject(Master);
+
+  ngOnInit(){
+    const result = this.masterService.getSum(10, 20);
+    console.log("Sum is: " + result);
+  }
+
+  @Injectable : The @Injectable decorator in Angular is used to define a class as a service that can be injected into other components or services.
+It marks the class as available for dependency injection and allows Angular's injector to create instances of the service when needed.
+
+The @Injectable decorator can also specify the providedIn property, which determines the scope of the service. 
+By setting providedIn to 'root', the service is made available application-wide as a singleton instance.
+
+Example:
+
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
