@@ -303,7 +303,7 @@ export class AppModule { }
 In data.service.ts:
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, using } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, using } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -503,3 +503,63 @@ export class ResourceApi {
 reload the data in resource and rxResource :
 this.userdata.reload();
 this.userList.reload(); 
+
+localStorage : localStorage is a web storage API that allows you to store key-value pairs in a web browser with no expiration time.
+Data stored in localStorage persists even after the browser is closed and reopened.
+
+example :
+To store data in localStorage:
+localStorage.setItem('username', 'Gopal Reddy');
+
+To retrieve data from localStorage:
+const username = localStorage.getItem('username');
+console.log(username); // Output: Gopal Reddy
+
+To remove data from localStorage:
+localStorage.removeItem('username');
+
+To clear all data from localStorage:
+localStorage.clear();
+
+ BehaviorSubject : BehaviorSubject is a type of Subject in RxJS that requires an initial value and emits its current value to new subscribers.
+It is useful for representing values that change over time and need to be accessed by multiple parts of an application.
+
+example :
+import { BehaviorSubject } from 'rxjs';
+
+const behaviorSubject = new BehaviorSubject<number>(0); // Initial value is 0
+
+what is pageload and reload in angular :
+Page load in Angular refers to the initial loading of an Angular application when a user first navigates to the application URL. 
+During page load, Angular bootstraps the application, initializes components, and renders the initial view.
+
+Reload in Angular refers to the process of refreshing or reloading the current view or component without reloading the entire application. 
+This can be achieved through various means, such as using Angular's router to navigate to the same route or programmatically triggering change detection to update the view with new data.
+
+example of page load :
+When a user navigates to http://localhost:4200/, the Angular application loads, and the root component (usually AppComponent) is initialized and rendered.
+
+example of reload :
+In a component, you can trigger a reload of data by calling a method that fetches new data and updates the component's state, causing the view to refresh.
+
+this.dataService.getData().subscribe(data => {
+  this.items = data; // Update component state
+});
+
+Subject is used for multicasting to multiple observers whereas BehaviorSubject is used when we need to provide an initial value and also need to access the last emitted value upon new subscriptions.
+
+**** Learn
+what is Subject and RxJS
+this.masterService.onLogin.next(true);
+
+
+authGuard : An AuthGuard in Angular is a type of route guard that is used to protect routes from unauthorized access.
+It implements the CanActivate interface and contains logic to determine whether a user is allowed to access a particular route based on their authentication status or other criteria.
+
+To create an AuthGuard, you typically follow these steps:
+
+1. Use the Angular CLI command ng generate guard <guard-name> to generate a new guard file.
+2. Implement the CanActivate interface in your guard class and define the canActivate method, which contains the logic for determining access to the route.
+3. Register the guard in the providers array of your NgModule.
+4. Apply the guard to routes in your routing configuration using the canActivate property.
+

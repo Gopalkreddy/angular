@@ -8,46 +8,68 @@ import { GetApi } from './get-api/get-api';
 import { ReactiveForm } from './components/reactive-form/reactive-form';
 import { PipeEx } from './components/pipe-ex/pipe-ex';
 import { ResourceApi } from './components/resource-api/resource-api';
+import { Login } from './components/login/login';
+import { Layout } from './components/layout/layout';
 
 export const routes: Routes = [
+
     {
-        path: 'admin',
-        component:Admin
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full'   
     },
     {
-        path: 'user',
-        component: User
+        path:'login',
+        component:Login
+
     },
     {
-        path: 'control-flow',
-        component: ContrlFlow
-    },
-    {
-        path: 'data-binding',
-        component: DataBinding
-    },
-    {
-        path: 'att-directive',
-        component: AttDirective
-    },
-    {
-        path: 'get-api1',
-        component: GetApi
-    },
-    {
-        path:'users',
-        component:User
-    },
-    {
-        path:'reactive-form',
-        component:ReactiveForm
-    },
-    {
-        path: 'pipe',
-        component: PipeEx 
-    },
-    {
-        path: 'resource',
-        component:ResourceApi
-       }
+        path:'',
+        component:Layout,
+        children:[ 
+             {
+                path: 'admin',
+                component:Admin
+            },
+            {
+                path: 'user',
+                component: User
+            },
+            {
+                path: 'control-flow',
+                component: ContrlFlow
+            },
+            {
+                path: 'data-binding',
+                component: DataBinding
+            },
+            {
+                path: 'att-directive',
+                component: AttDirective
+            },
+            {
+                path: 'get-api1',
+                component: GetApi
+            },
+            {
+                path:'users',
+                component:User
+            },
+            {
+                path:'reactive-form',
+                component:ReactiveForm
+            },
+            {
+                path: 'pipe',
+                component: PipeEx 
+            },
+            {
+                path: 'resource',
+                component:ResourceApi
+            },
+            {
+                path: 'login',
+                component: Login    
+            }]
+    }
 ];
